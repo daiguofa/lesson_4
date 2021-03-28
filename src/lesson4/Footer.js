@@ -9,6 +9,7 @@ export default function Footer(props) {
                     {count}
                 </span>
             </strong>
+            {'items left'}
         </div>
     )
 }

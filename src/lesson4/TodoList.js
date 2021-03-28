@@ -5,12 +5,12 @@ import AddTodo from './AddTodo'
 
 class TodoList extends React.Component {
     render() {
-        const { title, items } = this.props
+        const { title, items, addNew } = this.props
         return (
             <div className="todolist">
                 <header>
                     <h1>{title}</h1>
-                    <AddTodo />
+                    <AddTodo addNew={addNew} />
 
                 </header>
                 <ul className="list-unstyled">
