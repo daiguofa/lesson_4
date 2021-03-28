@@ -13,9 +13,9 @@ class App extends React.Component {
         this.OnFilterTodoItem=this.OnFilterTodoItem.bind(this);           
     }     
     componentWillMount(){
-        // this.OnFilterTodoItem("");
+        this.OnFilterTodoItem("");
     }
-    OnAddTodoItem(newItem) {
+    async OnAddTodoItem(newItem) {
         let isExist=this.state.data.some(item => item.id===newItem.id);
         if(isExist){
             alert("已包含该todo item");
@@ -23,7 +23,9 @@ class App extends React.Component {
         }
         let newdata = this.state.data.concat(newItem);
         // console.log("newdata",newdata);
-        this.setState({ data: newdata },console.log("data",this.state.data));        
+        await this.setState({ data: newdata });        
+        console.log("after await data",this.state.data);
+        this.OnFilterTodoItem("")
         // this.setState({ data: newdata },this.OnFilterTodoItem(""));
         // console.log("data",this.state.data);
         // console.log("filteredData",this.state.data,this.state.filteredData);
@@ -49,7 +51,8 @@ class App extends React.Component {
                 <h1>My Todo React App</h1>
                 <br />
                 <AddTodo AddTodoItem={this.OnAddTodoItem.bind(this)} />
-                <Todos data={data} />
+                {/* <Todos data={data} /> */}
+                <Todos data={filteredData} />
             </div>
         )
     }
