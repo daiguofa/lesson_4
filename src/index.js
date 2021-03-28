@@ -3,13 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 // import App from './App';
 import reportWebVitals from './reportWebVitals';
-import App from './lesson2/App';
+// import App from './lesson2/App';
+// import App from './carbon/App';
+// import App from './lesson3/App';
+import App from './lesson4/App';
+// import App from './lesson3/todo/App';
 
 console.log("REACT_APP_MSG:",process.env.REACT_APP_MSG);
 
 ReactDOM.render(
   <React.StrictMode>
     {App}
+    {/* <App/> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

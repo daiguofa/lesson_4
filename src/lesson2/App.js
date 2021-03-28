@@ -38,4 +38,7 @@ App = <NumberListWithKeyCorrect numbers={numbers} />
 
 //11 表单受控组件
 App = <NameForm />
+
+App = <Toggle />
+
 export default App
