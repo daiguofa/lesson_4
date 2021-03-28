@@ -1,4 +1,5 @@
 import update from 'immutability-helper';
+import { v4 as uuidv4 } from 'uuid';
 
 /**
  * Get the list of todo items.
@@ -7,17 +8,17 @@ import update from 'immutability-helper';
 export function getAll() {
     return [
         {
-            id: 1,
+            id: uuidv4(),
             text: 'Learn Javascript',
             completed: false
         },
         {
-            id: 2,
+            id: uuidv4(),
             text: 'Learn React',
             completed: false
         },
         {
-            id: 3,
+            id: uuidv4(),
             text: 'Build a React App',
             completed: false
         }
@@ -47,7 +48,8 @@ export function updateStatus(items, itemId, completed) {
 let todoCounter = 1;
 
 function getNextId() {
-    return getAll().length + todoCounter++;
+    // return getAll().length + todoCounter++;
+    return uuidv4();
 }
 
 /**
@@ -63,4 +65,10 @@ export function addToList(list, data) {
     }, data);
 
     return list.concat([item]);
+}
+
+export function deleteFromList(list, itemId) {
+    let index = list.findIndex(item => item.id === itemId);
+    console.log("itemId - index:",itemId,index);
+    return update(list, {$splice: [[index, 1]]});
 }

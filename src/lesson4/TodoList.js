@@ -3,21 +3,11 @@ import TodoItem from "./TodoItem"
 import Footer from './Footer'
 import AddTodo from './AddTodo'
 import FilteredList from './FilteredList'
-
+import FilterService from "./services/filter"
 class TodoList extends React.Component {
-    applyFilter(list, filter) {
-        switch (filter) {
-            case 'completed':
-                return list.filter(item => item.completed === true)
-            case 'active':
-                return list.filter(item => item.completed !== true)
-            default:
-                return list
-        }
-    }
     render() {
-        const { title, items, addNew, filter, changeFilter, changeStatus } = this.props
-        const filtedList = this.applyFilter(items, filter)
+        const { title, items, addNew, filter, changeFilter, changeStatus,deleteRow } = this.props
+        const filtedList = FilterService.applyFilter(items, filter)
         return (
             <div className="todolist">
                 <header>
@@ -25,7 +15,7 @@ class TodoList extends React.Component {
                     <AddTodo addNew={addNew} />
 
                 </header>
-                <FilteredList items={filtedList} changeStatus={changeStatus} />
+                <FilteredList items={filtedList} changeStatus={changeStatus} deleteRow={deleteRow}/>
                 {
                     //     <ul className="list-unstyled">
                     //     {filtedList.map(item => <TodoItem key={item.id} data={item} changeStatus={changeStatus} />)}

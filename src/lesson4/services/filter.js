@@ -1,8 +1,8 @@
-export const FILTER_ALL = 'all';
-export const FILTER_ACTIVE = 'active';
-export const FILTER_COMPLETED = 'completed';
+const FILTER_ALL = 'all';
+const FILTER_ACTIVE = 'active';
+const FILTER_COMPLETED = 'completed';
 
-export function applyFilter(list, filter) {
+function applyFilter(list, filter) {
     switch (filter) {
         case FILTER_COMPLETED:
             return list.filter(item => item.completed === true);
@@ -16,10 +16,14 @@ export function applyFilter(list, filter) {
 }
 
 
-export function getOptions() {
+function getOptions() {
     return {
         [FILTER_ALL]: 'All',
         [FILTER_ACTIVE]: 'Active',
         [FILTER_COMPLETED]: 'Completed'
     };
+}
+
+export default {
+    applyFilter,getOptions
 }
