@@ -51,5 +51,5 @@ class App extends React.Component {
 }
 
 
-const MyApp = <App />
-export default MyApp
+// const MyApp = <App />
+export default App

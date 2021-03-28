@@ -18,7 +18,7 @@ class TodoItem extends React.Component {
                     {data.text}
                 </label>
             </div>
-            <button type="button" onClick={handleDelete}>删除</button>
+            <button type="button" className="btn btn-default" onClick={handleDelete}>删除</button>
         </div>
     }
 }

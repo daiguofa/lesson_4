@@ -2,6 +2,7 @@
   "name": "react-lesson",
   "version": "0.1.0",
   "private": true,
+  "homepage": "./",
   "dependencies": {
     "@carbon/icons-react": "^10.28.0",
     "@testing-library/jest-dom": "^5.11.9",
@@ -15,12 +16,12 @@
     "keycode-js": "^3.1.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "typescript": "^4.2.3",
     "uuid": "^8.3.2",
     "web-vitals": "^1.1.1"
   },
-  "homepage": ".",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -46,8 +47,6 @@
   },
   "devDependencies": {
     "core-js": "^3.9.1",
-    "node-sass": "^5.0.0",
-    "sass": "^1.32.8",
-    "sass-loader": "^11.0.1"
+    "sass": "^1.32.8"
   }
 }
