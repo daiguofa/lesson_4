@@ -1,33 +1,36 @@
 import React from 'react'
+import * as KeyCode from "keycode-js"
 
 class AddTodo extends React.Component {
     constructor(props) {
-        super(props);
-        // this.handleSubmit = this.handleSubmit.bind(this);
-        this.textInput = React.createRef();
-    }    
-    handleSubmit(event) {
-        // Explicitly focus the text input using the raw DOM API
-        // Note: we're accessing "current" to get the DOM node        
-        event.preventDefault();
-        let text=this.textInput.current.value;
-        alert('A name was submitted: ' + this.textInput.current.value);
-        if (!text.trim()) {
-            alert("Input can't be null")
-            return
+        super(props)
+        this.state = {
+            value: props.value || ''
         }
+    }
 
-        let id = "id_"+text;
-        this.props.AddTodoItem({ id, text, complete: false });        
+    handleChange(e) {
+        this.setState({ value: e.target.value })
+    }
+    clear() {
+        this.setState({ value: '' })
+    }
+    handleKeyUp(e) {
+        const { addNew } = this.props
+        const text = this.state.value.trim()
+        if (e.keyCode === KeyCode.KEY_RETURN && text) {
+            addNew(text)
+            this.clear()
+        }
     }
     render() {
         return (
-            <form onSubmit={this.handleSubmit.bind(this)}>
-                <div>
-                    <input type="text" placeholder="TODO" ref={this.textInput} />
-                </div>
-                <button type="submit" >添加</button>
-            </form>
+            <input type="text" className="form-control add-todo" placeholder="添加"
+                value={this.state.value}
+                onKeyUp={(e) => this.handleKeyUp(e)}
+                onChange={e => this.handleChange(e)}
+
+            />
         )
     }
 }
