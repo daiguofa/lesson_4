@@ -4,8 +4,19 @@ import Footer from './Footer'
 import AddTodo from './AddTodo'
 
 class TodoList extends React.Component {
+    applyFilter(list, filter) {
+        switch (filter) {
+            case 'completed':
+                return list.filter(item => item.completed === true)
+            case 'active':
+                return list.filter(item => item.completed !== true)
+            default:
+                return list
+        }
+    }
     render() {
-        const { title, items, addNew } = this.props
+        const { title, items, addNew, filter, changeFilter, changeStatus } = this.props
+        const filtedList = this.applyFilter(items, filter)
         return (
             <div className="todolist">
                 <header>
@@ -14,9 +25,9 @@ class TodoList extends React.Component {
 
                 </header>
                 <ul className="list-unstyled">
-                    {items.map(item => <TodoItem key={item.id} data={item} />)}
+                    {filtedList.map(item => <TodoItem key={item.id} data={item} changeStatus={changeStatus} />)}
                 </ul>
-                <Footer count={items.length} />
+                <Footer {...{ count: items.length, filter, changeFilter }} />
             </div>
         )
     }
