@@ -1,17 +1,15 @@
 import React from 'react'
 import AddTodo from "./AddTodo"
 import TodoList from './TodoList'
+import { getAll, addToList, updateStatus } from "./services/todo"
+import { FILTER_ACTIVE } from "./services/filter"
 
 class App extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            filter: 'active',
-            items: [
-                { text: "test", id: "1", completed: true },
-                { text: "arya", id: "2", completed: false },
-                { text: "ibm", id: "3", completed: false }
-            ]
+            filter: FILTER_ACTIVE,
+            items: getAll()
         }
 
     }
@@ -19,18 +17,15 @@ class App extends React.Component {
         // let items = [...this.state.items]
         // let index = items.findIndex(item => item.id === itemId)
         // items[index].completed = completed
-        // this.setState({ items })
+        const updatedList = updateStatus(this.state.items, itemId, completed)
+        this.setState({ items: updatedList })
     }
     changeFilter(filter) {
         this.setState({ filter })
     }
     addNew(text) {
-        let nextId = this.state.items.length + 1
-        let item = {
-            id: nextId,
-            text: text
-        }
-        this.setState({ items: [...this.state.items, item] })
+        let updateList = addToList(this.state.items, { text, completed: false })
+        this.setState({ items: updateList })
     }
     render() {
         const data = this.state.items

@@ -2,6 +2,7 @@ import React from 'react'
 import TodoItem from "./TodoItem"
 import Footer from './Footer'
 import AddTodo from './AddTodo'
+import FilteredList from './FilteredList'
 
 class TodoList extends React.Component {
     applyFilter(list, filter) {
@@ -24,9 +25,13 @@ class TodoList extends React.Component {
                     <AddTodo addNew={addNew} />
 
                 </header>
-                <ul className="list-unstyled">
-                    {filtedList.map(item => <TodoItem key={item.id} data={item} changeStatus={changeStatus} />)}
-                </ul>
+                <FilteredList items={filtedList} changeStatus={changeStatus} />
+                {
+                    //     <ul className="list-unstyled">
+                    //     {filtedList.map(item => <TodoItem key={item.id} data={item} changeStatus={changeStatus} />)}
+                    // </ul>
+                }
+
                 <Footer {...{ count: items.length, filter, changeFilter }} />
             </div>
         )

@@ -6,7 +6,8 @@ class TodoItem extends React.Component {
     render() {
         const { data, changeStatus } = this.props
         const handleChange = (checked) => changeStatus(data.id, checked)
-        return <div className="ui-state-default">
+        const className = "todo-item ui-state-default" + (data.completed ? 'completed' : 'pending')
+        return <div className={className}>
             <div className="checkbox">
                 <label>
                     {
