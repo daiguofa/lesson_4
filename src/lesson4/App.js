@@ -8,7 +8,7 @@ class App extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            filter: FilterService.getOptions.FILTER_ALL,
+            filter: FilterService.FILTER_ALL,
             items: getAll()
         }
 

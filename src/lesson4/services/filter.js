@@ -24,6 +24,12 @@ function getOptions() {
     };
 }
 
+const OPTIONS={
+    [FILTER_ALL]: 'All',
+    [FILTER_ACTIVE]: 'Active',
+    [FILTER_COMPLETED]: 'Completed'
+}
+
 export default {
-    applyFilter,getOptions
+    applyFilter,OPTIONS,FILTER_ALL,FILTER_ACTIVE,FILTER_COMPLETED
 }

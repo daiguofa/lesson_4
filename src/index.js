@@ -25,11 +25,13 @@ console.log("REACT_APP_MSG:",process.env.REACT_APP_MSG);
 // );
 
 ReactDOM.render((
-  <Router >
-      <Route exact path="/" component={Home}/>
-      <Route path="/Lesson4" component={Lesson4}/>
-      <Route path="/carbon" component={CarbonDemo}/>
-  </Router>
+  <React.StrictMode>
+    <Router >
+        <Route exact path="/" component={Home}/>
+        <Route path="/Lesson4" component={Lesson4}/>
+        <Route path="/carbon" component={CarbonDemo}/>
+    </Router>
+  </React.StrictMode>
   ),document.getElementById('root')
 );
 

@@ -1,11 +1,7 @@
 import React from 'react'
+import FilterService from "./services/filter"
 
-const options = {
-    'all': 'All',
-    'active': 'Active',
-    'completed': 'Completed'
-}
-
+const options = FilterService.OPTIONS
 export default function Filter(props) {
     const { filter, change } = props
     const getClass = (key) => (key == filter ? 'selected' : '')

@@ -22,7 +22,7 @@ class TodoList extends React.Component {
                     // </ul>
                 }
 
-                <Footer {...{ count: items.length, filter, changeFilter }} />
+                <Footer {...{ count: filtedList.length, filter, changeFilter }} />
             </div>
         )
     }
