@@ -16,7 +16,9 @@ class TodoList extends React.Component {
         }
     }
     render() {
-        const { title, items, addNew, filter, changeFilter, changeStatus } = this.props
+        console.log(this.props)
+        const { title, items, filter } = this.props.data
+        const { addNew, changeFilter, changeStatus } = this.props.actions
         const filtedList = this.applyFilter(items, filter)
         return (
             <div className="todolist">
