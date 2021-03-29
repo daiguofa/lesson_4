@@ -1,20 +1,18 @@
-import React from 'react'
-
+import React from "react"
 function UserGreeting(props) {
-    return <h1>Welcome</h1>
+    return <h1>Welcome back!</h1>;
 }
 
 function GuestGreeting(props) {
-    return <h1>Please Sign Up</h1>
+    return <h1>Please sign up.</h1>;
 }
-
 
 function Greeting(props) {
     const isLoggedIn = props.isLoggedIn;
     if (isLoggedIn) {
-        return <UserGreeting />
+        return <UserGreeting />;
     }
-    return <GuestGreeting />
+    return <GuestGreeting />;
 }
 
-export default Greeting
+export default Greeting;

@@ -2,27 +2,27 @@ import React from 'react'
 
 class NameForm extends React.Component {
     constructor(props) {
-        super(props)
-        this.input = React.createRef()
-        this.handleSubmit = this.handleSubmit.bind(this)
+        super(props);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.input = React.createRef();
     }
 
-    handleSubmit(e) {
-        alert('A name was submitted' + this.input.current.value)
-        e.preventDefault()
+    handleSubmit(event) {
+        alert('A name was submitted: ' + this.input.current.value);
+        event.preventDefault();
     }
+
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
                 <label>
                     Name:
-                     <input type="text" ref={this.input} />
+            <input type="text" ref={this.input} />
                 </label>
-                <input type="submit" value="submit" />
+                <input type="submit" value="Submit" />
             </form>
-        )
+        );
     }
 }
-
 
 export default NameForm

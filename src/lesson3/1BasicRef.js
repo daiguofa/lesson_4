@@ -1,92 +1,84 @@
 import React, { useRef } from 'react'
 
-export class CustomeTextput extends React.Component {
+export class MyComponent extends React.Component {
     constructor(props) {
-        super(props)
-        this.textInput = React.createRef()
-        this.focusTextInput = this.focusTextInput.bind(this)
-        this.state = { name: "ibm" }
+        super(props);
+        this.myRef = React.createRef();
+    }
+    render() {
+        return <div ref={this.myRef} />;
+    }
+}
+
+export class CustomTextInput extends React.Component {
+    constructor(props) {
+        super(props);
+        // create a ref to store the textInput DOM element
+        this.textInput = React.createRef();
+        this.focusTextInput = this.focusTextInput.bind(this);
     }
 
     focusTextInput() {
-        this.textInput.current.focus()
+        // Explicitly focus the text input using the raw DOM API
+        // Note: we're accessing "current" to get the DOM node
+        this.textInput.current.focus();
     }
 
     render() {
+        // tell React that we want to associate the <input> ref
+        // with the `textInput` that we created in the constructor
         return (
             <div>
                 <input
                     type="text"
-                    ref={this.textInput}
-                />
+                    ref={this.textInput} />
                 <input
                     type="button"
-                    value="Focus the text"
+                    value="Focus the text input"
                     onClick={this.focusTextInput}
                 />
             </div>
-
-        )
+        );
     }
 }
 
+
 export class AutoFocusTextInput extends React.Component {
     constructor(props) {
-        super(props)
-        this.textInput = React.createRef()
-
+        super(props);
+        this.textInput = React.createRef();
     }
+
     componentDidMount() {
-        console.log(this.textInput.current)
-        this.textInput.current.focusTextInput()
+        this.textInput.current.focusTextInput();
     }
 
     render() {
         return (
-            <CustomeTextput ref={this.textInput} />
-        )
-    }
-}
-
-
-
-function Comp() {
-    return <div>自定义组件</div>
-}
-
-export class MyComponent extends React.Component {
-    constructor(props) {
-        super(props)
-        this.myRef = React.createRef()
-        this.show = this.show.bind(this)
-    }
-    show() {
-        console.log(this.myRef.current)
-    }
-    render() {
-        return null
+            <CustomTextInput ref={this.textInput} />
+        );
     }
 }
 
 
 export function FuncTextInput(props) {
-    const textInput = useRef(null)
+    // textInput must be declared here so the ref can refer to it
+    const textInput = useRef(null);
 
     function handleClick() {
-        textInput.current.focus()
+        textInput.current.focus();
     }
 
     return (
         <div>
             <input
                 type="text"
-                ref={textInput}
-            />
+                ref={textInput} />
             <input
                 type="button"
-                value="Focus the text"
+                value="Focus the text input"
                 onClick={handleClick}
             />
         </div>
-    )
+    );
 }

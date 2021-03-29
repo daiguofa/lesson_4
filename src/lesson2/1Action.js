@@ -1,13 +1,19 @@
-import React from 'react'
+import React from "react"
 function ActionLink() {
     function handleClick(e) {
         e.preventDefault();
-        alert("this link is clicked")
+        console.log('The link was clicked.');
     }
 
     return (
-        <a href="https://baidu.com" onClick={handleClick}>Click me</a>
-    )
+        <a href="#" onClick={handleClick}>
+            Click me
+        </a>
+    );
 }
 
-export default ActionLink
+
+
+
+
+export default ActionLink;
